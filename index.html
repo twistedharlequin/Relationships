@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relationships</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="kinetic-lines-bg"></div> 
+
+    <div class="container">
+        <header>
+            <h1>Relationship</h1>
+        </header>
+
+        <section class="profile-section">
+            <div class="profile-card">
+                <img src="Haipil.jpg" alt="Foto Haipil" class="profile-photo bordered">
+                <h2>Haipil</h2>
+            </div>
+            <div class="profile-card">
+                <img src="Kin.jpg" alt="Foto Kin" class="profile-photo bordered">
+                <h2>Kin</h2>
+            </div>
+        </section>
+
+        <section class="duration-section">
+            <h3>We've Been Together For:</h3>
+            <div id="duration-timer" class="timer">
+                <span id="years">0 Year</span>, 
+                <span id="days">0 Day</span>, 
+                <span id="hours">0 Hour</span>, 
+                <span id="minutes">0 Minute</span>, 
+                <span id="seconds">0 Second</span>
+            </div>
+        </section>
+
+        <hr>
+
+        <section class="streak-section">
+            <h3>Daily Streak Status ⏳</h3>
+            <p>After 24 hours you have to respond to the button to maintain the streak !!</p>
+            <div class="streak-info">
+                <p>Streak Saat Ini: <strong id="current-streak">0</strong> Hari</p>
+                <p id="last-response-time">Respon Terakhir: Belum ada</p>
+            </div>
+            <button id="respond-button" class="modern-button">Saya Respon Sekarang</button>
+            <p id="streak-message"></p>
+        </section>
+
+        <footer>
+            <p>&copy; Relationships</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

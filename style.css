@@ -1,0 +1,196 @@
+/* Variabel Warna untuk Dark Mode (Aksen Cyan Modern) */
+:root {
+    --bg-color: #121212; 
+    --text-color: #E0E0E0; 
+    --primary-color: #747474; /* Warna aksen/tepi modern (Cyan) */
+    --secondary-bg: #1F1F1F; 
+    --border-radius: 12px;
+}
+
+/* Reset Dasar & Font */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    padding: 0;
+    
+    /* Perbaikan Scroll */
+    position: relative; 
+    min-height: 100vh; 
+    /* Hati-hati: Jangan tambahkan 'overflow: hidden;' di sini */
+}
+
+/* ---------------------------------------------------- */
+/* Latar Belakang Garis Beranimasi (Fixed) */
+/* ---------------------------------------------------- */
+.kinetic-lines-bg {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 200%; 
+    height: 200%; 
+    opacity: 0.1; /* Transparansi untuk efek lembut */
+    pointer-events: none; 
+
+    /* Membuat pola garis diagonal menggunakan linear-gradient */
+    background: repeating-linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.5), 
+        rgba(255, 255, 255, 0.5) 1px,
+        transparent 1px,
+        transparent 30px
+    );
+    background-size: 30px 30px; 
+    transform: translate(-50%, -50%); 
+
+    /* Menerapkan Animasi */
+    animation: moveLines 120s linear infinite; 
+}
+
+@keyframes moveLines {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 3000px 3000px;
+    }
+}
+
+/* ---------------------------------------------------- */
+/* Kontainer & Konten Utama */
+/* ---------------------------------------------------- */
+.container {
+    max-width: 900px;
+    margin: 20px auto; 
+    /* Kontainer harus di atas animasi */
+    position: relative;
+    z-index: 10; 
+    /* Latar belakang semi-transparan untuk menonjolkan konten */
+    background-color: rgba(31, 31, 31, 0.95); 
+    padding: 40px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    /* Tinggi kontainer fleksibel agar konten bisa discroll */
+}
+
+/* Header */
+header h1 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 40px;
+    font-weight: 600;
+}
+
+/* Foto Profil */
+.profile-section {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 50px;
+    gap: 20px;
+}
+
+.profile-card {
+    text-align: center;
+}
+
+.profile-photo {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%; 
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+}
+
+.profile-photo.bordered {
+    border: 5px solid var(--primary-color); 
+    box-shadow: 0 0 15px var(--primary-color); 
+}
+
+.profile-photo:hover {
+    transform: scale(1.05);
+}
+
+/* Durasi Timer */
+.duration-section {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 20px 0;
+}
+
+.timer {
+    font-size: 2.2em;
+    font-weight: 600;
+    color: var(--primary-color);
+    letter-spacing: 1px;
+    display: block;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #333;
+    margin: 40px 0;
+}
+
+/* Streak Section & Tombol */
+.streak-section {
+    text-align: center;
+}
+
+.streak-info {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #2c2c2c;
+    border-radius: var(--border-radius);
+}
+
+#current-streak {
+    font-size: 1.5em;
+    color: var(--primary-color);
+}
+
+.modern-button {
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    margin-top: 15px;
+}
+
+.modern-button:hover:not(:disabled) {
+    background-color: #38c8cf; 
+}
+
+.modern-button:active:not(:disabled) {
+    transform: scale(0.98);
+}
+
+.modern-button:disabled {
+    background-color: #555;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid #333;
+    font-size: 0.9em;
+    color: #888;
+}
