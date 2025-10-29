@@ -1,196 +1,135 @@
-/* Variabel Warna untuk Dark Mode (Aksen Cyan Modern) */
-:root {
-    --bg-color: #121212; 
-    --text-color: #E0E0E0; 
-    --primary-color: #747474; /* Warna aksen/tepi modern (Cyan) */
-    --secondary-bg: #1F1F1F; 
-    --border-radius: 12px;
-}
-
-/* Reset Dasar & Font */
-* {
+/* CSS untuk Styling Dasar dan Tema Gradient Gelap */
+body {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0f0c29, #301934, #24243e); 
+    color: #ffffff;
     font-family: 'Poppins', sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    line-height: 1.6;
-    padding: 0;
-    
-    /* Perbaikan Scroll */
-    position: relative; 
-    min-height: 100vh; 
-    /* Hati-hati: Jangan tambahkan 'overflow: hidden;' di sini */
+    overflow: hidden; 
 }
 
-/* ---------------------------------------------------- */
-/* Latar Belakang Garis Beranimasi (Fixed) */
-/* ---------------------------------------------------- */
-.kinetic-lines-bg {
-    position: fixed; 
+/* --- LOADING SCREEN STYLES --- */
+#loading-screen {
+    position: fixed;
     top: 0;
     left: 0;
-    width: 200%; 
-    height: 200%; 
-    opacity: 0.1; /* Transparansi untuk efek lembut */
-    pointer-events: none; 
-
-    /* Membuat pola garis diagonal menggunakan linear-gradient */
-    background: repeating-linear-gradient(
-        45deg,
-        rgba(255, 255, 255, 0.5), 
-        rgba(255, 255, 255, 0.5) 1px,
-        transparent 1px,
-        transparent 30px
-    );
-    background-size: 30px 30px; 
-    transform: translate(-50%, -50%); 
-
-    /* Menerapkan Animasi */
-    animation: moveLines 120s linear infinite; 
-}
-
-@keyframes moveLines {
-    from {
-        background-position: 0 0;
-    }
-    to {
-        background-position: 3000px 3000px;
-    }
-}
-
-/* ---------------------------------------------------- */
-/* Kontainer & Konten Utama */
-/* ---------------------------------------------------- */
-.container {
-    max-width: 900px;
-    margin: 20px auto; 
-    /* Kontainer harus di atas animasi */
-    position: relative;
-    z-index: 10; 
-    /* Latar belakang semi-transparan untuk menonjolkan konten */
-    background-color: rgba(31, 31, 31, 0.95); 
-    padding: 40px;
-    border-radius: var(--border-radius);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-    /* Tinggi kontainer fleksibel agar konten bisa discroll */
-}
-
-/* Header */
-header h1 {
-    text-align: center;
-    color: var(--primary-color);
-    margin-bottom: 40px;
-    font-weight: 600;
-}
-
-/* Foto Profil */
-.profile-section {
+    width: 100%;
+    height: 100%;
+    background: #0f0c29; /* Warna gelap solid saat loading */
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    margin-bottom: 50px;
-    gap: 20px;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 1s ease-out; /* Animasi fade-out */
 }
 
-.profile-card {
+.loader-heart {
+    font-size: 80px;
+    animation: pulse 1.5s infinite, bounce 1.5s infinite alternate; /* Animasi pulsa dan pantulan */
+    color: #FF1493;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+}
+
+@keyframes bounce {
+    from { transform: translateY(0); }
+    to { transform: translateY(-10px); }
+}
+
+#loading-screen p {
+    margin-top: 10px;
+    font-size: 1.2em;
+    color: #8A2BE2;
+}
+
+/* Kelas untuk menyembunyikan konten saat loading selesai */
+.hidden {
+    display: none;
+}
+.fade-out {
+    opacity: 0 !important;
+    pointer-events: none;
+}
+
+
+/* --- CARD STYLING (Lebih Kecil) --- */
+.relationship-card {
+    background-color: rgba(30, 30, 30, 0.9);
+    backdrop-filter: blur(5px);
+    border-radius: 20px;
+    padding: 25px; /* Padding lebih kecil */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
     text-align: center;
+    max-width: 350px; /* Lebar maksimum lebih kecil */
+    width: 90%;
+    z-index: 10; 
+    animation: fadeInCard 1.5s ease-out forwards; 
+    opacity: 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.profile-photo {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 50%; 
-    margin-bottom: 15px;
-    transition: transform 0.3s ease;
+/* Animasi Card dan Teks */
+@keyframes fadeInCard {
+    from { opacity: 0; transform: scale(0.6) translateY(50px); } /* Mulai dari skala lebih kecil */
+    to { opacity: 1; transform: scale(1) translateY(0); }
 }
-
-.profile-photo.bordered {
-    border: 5px solid var(--primary-color); 
-    box-shadow: 0 0 15px var(--primary-color); 
+@keyframes fadeInText {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
-
-.profile-photo:hover {
-    transform: scale(1.05);
+h1, h3, p, .role {
+    opacity: 0; 
+    animation: fadeInText 1.5s ease-out forwards; 
+    margin: 5px 0;
 }
+h1 { animation-delay: 1.5s; } /* Setelah loading selesai, berikan delay untuk teks */
+h3 { animation-delay: 2.0s; }
+.role { animation-delay: 2.2s; font-size: 0.9em; color: #bbb; } /* Styling detail */
+.start-date-text { animation-delay: 2.5s; font-style: italic; font-size: 0.9em; } /* Styling detail */
+#duration-text { animation-delay: 2.8s; font-size: 1.1em; }
+#level-info { animation-delay: 3.1s; }
 
-/* Durasi Timer */
-.duration-section {
-    text-align: center;
-    margin-bottom: 40px;
-    padding: 20px 0;
-}
+/* Styling Profil */
+.profiles { display: flex; justify-content: space-around; align-items: center; margin: 15px 0; }
+.profile-pic { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 4px solid #8A2BE2; transition: transform 0.3s ease; } /* Foto lebih kecil */
+.heart-icon { font-size: 40px; color: #FF1493; margin: 0 10px; animation: pulse 1.5s infinite; }
 
-.timer {
-    font-size: 2.2em;
-    font-weight: 600;
-    color: var(--primary-color);
-    letter-spacing: 1px;
-    display: block;
-}
-
-hr {
-    border: 0;
-    height: 1px;
-    background: #333;
-    margin: 40px 0;
-}
-
-/* Streak Section & Tombol */
-.streak-section {
-    text-align: center;
-}
-
-.streak-info {
-    margin: 20px 0;
-    padding: 15px;
-    background-color: #2c2c2c;
-    border-radius: var(--border-radius);
-}
-
-#current-streak {
-    font-size: 1.5em;
-    color: var(--primary-color);
-}
-
-.modern-button {
-    background-color: var(--primary-color);
-    color: var(--bg-color);
-    border: none;
-    padding: 12px 25px;
-    border-radius: 50px;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 1.1em;
-    transition: background-color 0.3s ease, transform 0.1s ease;
+/* Styling Informasi Level */
+#level-info {
+    background: linear-gradient(45deg, #FF1493, #8A2BE2);
+    padding: 10px 20px;
+    border-radius: 25px;
     margin-top: 15px;
+    font-weight: bold;
+    display: inline-block;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(255, 20, 147, 0.4);
+    font-size: 1em;
 }
 
-.modern-button:hover:not(:disabled) {
-    background-color: #38c8cf; 
+/* --- SPARKLING LOVE ANIMATION --- (Tetap sama) */
+.spark-container {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: 5; pointer-events: none; 
 }
 
-.modern-button:active:not(:disabled) {
-    transform: scale(0.98);
+.spark {
+    position: absolute; color: #FFD700; font-size: 14px; opacity: 0; user-select: none; animation: twinkle 4s linear infinite;
 }
 
-.modern-button:disabled {
-    background-color: #555;
-    cursor: not-allowed;
-    opacity: 0.7;
-}
-
-/* Footer */
-footer {
-    text-align: center;
-    margin-top: 50px;
-    padding-top: 20px;
-    border-top: 1px solid #333;
-    font-size: 0.9em;
-    color: #888;
+@keyframes twinkle {
+    0% { transform: scale(0.5); opacity: 0; }
+    25% { transform: scale(1.2); opacity: 1; }
+    50% { transform: scale(0.8); opacity: 0.5; }
+    75% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(0.5); opacity: 0; }
 }

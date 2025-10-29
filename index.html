@@ -3,56 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Relationships</title>
+    <title>Relationship</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="kinetic-lines-bg"></div> 
 
-    <div class="container">
-        <header>
-            <h1>Relationship</h1>
-        </header>
+    <div id="loading-screen">
+        <div class="loader-heart">❤️</div>
+        <p>Loading</p>
+    </div>
 
-        <section class="profile-section">
-            <div class="profile-card">
-                <img src="Haipil.jpg" alt="Foto Haipil" class="profile-photo bordered">
-                <h2>Haipil</h2>
+    <div class="spark-container" id="spark-container"></div>
+
+    <div class="relationship-card hidden" id="main-content">
+        <h1>Relationship</h1>
+        
+        <div class="profiles">
+            <div>
+                <img src="Haipil.jpg" alt="Foto Haipil" class="profile-pic" id="haipil-pic"> 
+                <h3>Haipil</h3> <span class="role">The Boyfriend</span>
             </div>
-            <div class="profile-card">
-                <img src="Kin.jpg" alt="Foto Kin" class="profile-photo bordered">
-                <h2>Kin</h2>
+            <span class="heart-icon">💓</span>
+            <div>
+                <img src="Kin.jpg" alt="Foto Kin" class="profile-pic" id="kin-pic">
+                <h3>Kin</h3> <span class="role">The Girlfriend</span>
             </div>
-        </section>
+        </div>
 
-        <section class="duration-section">
-            <h3>We've Been Together For:</h3>
-            <div id="duration-timer" class="timer">
-                <span id="years">0 Year</span>, 
-                <span id="days">0 Day</span>, 
-                <span id="hours">0 Hour</span>, 
-                <span id="minutes">0 Minute</span>, 
-                <span id="seconds">0 Second</span>
-            </div>
-        </section>
-
-        <hr>
-
-        <section class="streak-section">
-            <h3>Daily Streak Status ⏳</h3>
-            <p>After 24 hours you have to respond to the button to maintain the streak !!</p>
-            <div class="streak-info">
-                <p>Streak Saat Ini: <strong id="current-streak">0</strong> Hari</p>
-                <p id="last-response-time">Respon Terakhir: Belum ada</p>
-            </div>
-            <button id="respond-button" class="modern-button">Saya Respon Sekarang</button>
-            <p id="streak-message"></p>
-        </section>
-
-        <footer>
-            <p>&copy; Relationships</p>
-        </footer>
+        <p class="start-date-text">Start Date: 04 October 2025</p>
+        <p id="duration-text"></p>
+        <p id="level-info"></p>
     </div>
 
     <script src="script.js"></script>
